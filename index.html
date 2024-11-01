@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>gitbookify</title>
+        <link rel="stylesheet" type="text/css" href="src/style.css" />
+    </head>
+    <body>
+        <div>
+            <details id="details">
+                <summary><h1>gitbookify</h1></summary>
+                <p>
+                    Enter a title in the small box, paste Markdown or HTML into the large box, then
+                    press Convert to save a file suitable for importing into GitBook.
+                </p>
+                <p>
+                    Headings are promoted a level, so Heading 2 becomes Heading 1. Note: if
+                    importing HTML rather than Markdown, GitBook incorrectly imports both Heading 1
+                    and Heading 2 as Heading 2, so you'll have to fix any Heading 1s manually after
+                    the import.
+                </p>
+                <p>
+                    GitBook doesn't support &lt;kbd&gt; tags for keyboard shortcuts, so these are
+                    converted to inline code.
+                </p>
+            </details>
+        </div>
+        <table>
+            <tr class="single-line">
+                <td><label for="title">Page title:</label></td>
+                <td>
+                    <textarea
+                        id="title"
+                        name="title"
+                        rows="1"
+                        cols="120"
+                        oninput="removeNewlines(this); enableConvertBtn();"
+                    ></textarea>
+                </td>
+                <td>
+                    <button
+                        id="convertBtn"
+                        type="button"
+                        name="button"
+                        onclick="convert();"
+                        disabled
+                    >
+                        Convert
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="content">Content:</label></td>
+                <td colspan="2">
+                    <textarea
+                        id="content"
+                        name="content"
+                        rows="25"
+                        cols="100"
+                        oninput="enableConvertBtn();"
+                    ></textarea>
+                </td>
+            </tr>
+        </table>
+    </body>
+    <!-- Load main script after <body> to ensure element IDs are defined -->
+    <script type="text/javascript" src="src/index.js"></script>
+</html>
